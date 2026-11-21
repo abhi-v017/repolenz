@@ -56,8 +56,8 @@ export async function startServer(port = 3001, initialRepoPath = process.cwd()) 
   const { app, service } = createApp(initialRepoPath);
 
   return new Promise((resolve) => {
-    const server = app.listen(port, () => {
-      console.log(`\n🚀 RepoLenz API Server running at http://localhost:${port}`);
+    const server = app.listen(port, '0.0.0.0', () => {
+      console.log(`\n🚀 RepoLenz API Server running at http://0.0.0.0:${port}`);
       console.log(`📂 Active repository: ${service.rootPath}\n`);
       resolve({ server, service });
     });
