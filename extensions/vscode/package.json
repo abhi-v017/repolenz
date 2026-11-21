@@ -4,6 +4,12 @@
   "description": "Interactive codebase dependency graphs, change impact analysis, and AST code intelligence inside VS Code.",
   "version": "0.1.0",
   "publisher": "repolenz",
+  "icon": "media/icon.png",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/repolenz/repolenz"
+  },
   "engines": {
     "vscode": "^1.80.0"
   },
@@ -18,32 +24,106 @@
     "codebase-intelligence",
     "ast",
     "tree-sitter",
-    "architecture"
+    "architecture",
+    "impact-analysis"
   ],
   "activationEvents": [
-    "onCommand:repolenz.open"
+    "onStartupFinished"
   ],
   "main": "./extension.js",
+  "scripts": {
+    "package": "npx @vscode/vsce package"
+  },
   "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "repolenz-sidebar",
+          "title": "RepoLenz",
+          "icon": "media/icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "repolenz-sidebar": [
+        {
+          "id": "repolenz.sidebar",
+          "name": "RepoLenz Intelligence"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "repolenz.open",
-        "title": "RepoLenz: Open Dependency Map",
+        "title": "RepoLenz: Open Visual Dependency Map",
         "icon": "$(type-hierarchy)"
+      },
+      {
+        "command": "repolenz.analyzeActiveFile",
+        "title": "RepoLenz: Analyze Change Impact",
+        "icon": "$(pulse)"
+      },
+      {
+        "command": "repolenz.searchSymbols",
+        "title": "RepoLenz: Search Workspace Symbols",
+        "icon": "$(symbol-method)"
+      },
+      {
+        "command": "repolenz.askQA",
+        "title": "RepoLenz: Ask Codebase Question",
+        "icon": "$(comment-discussion)"
+      },
+      {
+        "command": "repolenz.reindex",
+        "title": "RepoLenz: Re-Index Workspace",
+        "icon": "$(refresh)"
       }
     ],
     "menus": {
       "editor/title": [
         {
           "command": "repolenz.open",
-          "group": "navigation"
+          "group": "navigation",
+          "when": "!isOutput"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "repolenz.analyzeActiveFile",
+          "group": "7_modification",
+          "when": "editorTextFocus"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "repolenz.analyzeActiveFile",
+          "group": "7_modification"
         }
       ],
       "commandPalette": [
         {
           "command": "repolenz.open"
+        },
+        {
+          "command": "repolenz.analyzeActiveFile"
+        },
+        {
+          "command": "repolenz.searchSymbols"
+        },
+        {
+          "command": "repolenz.askQA"
+        },
+        {
+          "command": "repolenz.reindex"
         }
       ]
     }
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.3.0",
+    "ignore": "^7.0.16",
+    "tree-sitter-wasms": "^0.1.13",
+    "web-tree-sitter": "^0.20.8"
   }
 }

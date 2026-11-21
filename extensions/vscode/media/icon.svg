@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b0764" />
+      <stop offset="100%" stop-color="#21122e" />
+    </linearGradient>
+    <linearGradient id="needle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc" />
+      <stop offset="100%" stop-color="#7e22ce" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="128" height="128" rx="28" fill="url(#grad)" stroke="#581c87" stroke-width="4" />
+
+  <!-- Outer Ring -->
+  <circle cx="64" cy="64" r="44" fill="none" stroke="#7e22ce" stroke-width="3" stroke-dasharray="4 4" opacity="0.6" />
+  <circle cx="64" cy="64" r="36" fill="none" stroke="#a855f7" stroke-width="3.5" />
+
+  <!-- Compass / Lens Needle Pointer -->
+  <polygon points="86,42 74,74 42,86 54,54" fill="url(#needle)" />
+
+  <!-- Center Pivot Core -->
+  <circle cx="64" cy="64" r="6" fill="#f5f3ff" stroke="#3b0764" stroke-width="2" />
+</svg>

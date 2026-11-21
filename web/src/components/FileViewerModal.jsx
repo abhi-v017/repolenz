@@ -57,6 +57,22 @@ export function FileViewerModal({ filePath, initialLine, onClose }) {
           </div>
 
           <div className="flex items-center gap-2">
+            {typeof window !== 'undefined' && window.parent !== window && (
+              <button
+                onClick={() => {
+                  window.parent.postMessage({
+                    type: 'repolenz:openFile',
+                    filePath,
+                    line: initialLine || 1
+                  }, '*');
+                }}
+                className="btn-solid btn-solid-plum px-3 py-1.5 text-xs text-purple-200 hover:text-white rounded-lg flex items-center gap-1.5"
+                title="Open this file in VS Code editor"
+              >
+                <Code2 className="w-3.5 h-3.5 text-purple-300" />
+                <span>Open in Editor</span>
+              </button>
+            )}
             <button
               onClick={handleCopy}
               className="btn-solid btn-solid-zinc p-2 text-zinc-300 hover:text-white rounded-lg"

@@ -18,7 +18,13 @@ import {
 } from './services/api';
 
 export function App() {
-  const [activeTab, setActiveTab] = useState('overview');
+  const [activeTab, setActiveTab] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('tab') || 'overview';
+    }
+    return 'overview';
+  });
   const [repoStatus, setRepoStatus] = useState(null);
   const [filesData, setFilesData] = useState(null);
   const [graphData, setGraphData] = useState(null);
@@ -33,7 +39,13 @@ export function App() {
   const [viewingLine, setViewingLine] = useState(null);
 
   // Impact analysis target file
-  const [impactTargetFile, setImpactTargetFile] = useState(null);
+  const [impactTargetFile, setImpactTargetFile] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('file') || null;
+    }
+    return null;
+  });
 
   const loadAllData = async () => {
     setLoading(true);

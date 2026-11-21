@@ -13,6 +13,7 @@
     "dev": "node src/server/app.js",
     "scan": "node src/index.js",
     "build:web": "npm --prefix web run build",
+    "build:extension": "node scripts/build-extension.js",
     "prepublishOnly": "npm --prefix web run build",
     "test": "vitest run",
     "test:watch": "vitest"

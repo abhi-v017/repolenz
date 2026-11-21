@@ -52,15 +52,18 @@ export function createApp(initialRepoPath = process.cwd()) {
 /**
  * Starts the standalone server.
  */
-export async function startServer(port = 3001, initialRepoPath = process.cwd()) {
+export async function startServer(port = 3001, initialRepoPath = process.cwd(), host = process.env.HOST || '0.0.0.0') {
   const { app, service } = createApp(initialRepoPath);
 
-  return new Promise((resolve) => {
-    const server = app.listen(port, '0.0.0.0', () => {
-      console.log(`\n🚀 RepoLenz API Server running at http://0.0.0.0:${port}`);
+  return new Promise((resolve, reject) => {
+    const server = app.listen(port, host, () => {
+      const address = server.address();
+      const actualPort = typeof address === 'object' && address ? address.port : port;
+      console.log(`\n🚀 RepoLenz API Server running at http://${host}:${actualPort}`);
       console.log(`📂 Active repository: ${service.rootPath}\n`);
-      resolve({ server, service });
+      resolve({ server, service, port: actualPort });
     });
+    server.on('error', reject);
   });
 }
 
