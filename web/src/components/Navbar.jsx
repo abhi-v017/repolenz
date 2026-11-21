@@ -8,7 +8,7 @@ import {
   Code2,
   Search,
   MessageSquareCode,
-  FolderOpen
+  GitBranch
 } from 'lucide-react';
 
 export function Navbar({
@@ -92,10 +92,10 @@ export function Navbar({
           <button
             onClick={onOpenAccessModal}
             className="btn-solid btn-solid-zinc flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs"
-            title="Open or import repository"
+            title="Analyze a GitHub repository"
           >
-            <FolderOpen className="w-3.5 h-3.5 text-purple-300" />
-            <span className="hidden sm:inline">Open Repo</span>
+            <GitBranch className="w-3.5 h-3.5 text-purple-300" />
+            <span className="hidden sm:inline">Analyze Repo</span>
           </button>
 
           <button

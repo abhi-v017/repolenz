@@ -104,36 +104,59 @@ export class RepositoryService {
    * @param {string} newPath - Target directory or git URL
    */
   async setRepository(newPath) {
-    if (typeof newPath === 'string' && (newPath.startsWith('http://') || newPath.startsWith('https://') || newPath.startsWith('git@'))) {
-      const sanitizedName = newPath.replace(/\.git$/, '').split('/').pop() || 'cloned-repo';
-      const clonesDir = path.resolve(process.cwd(), '.repolenz/clones');
-      const targetDir = path.join(clonesDir, sanitizedName);
-      if (!fs.existsSync(clonesDir)) {
-        fs.mkdirSync(clonesDir, { recursive: true });
+    if (typeof newPath === 'string') {
+      let trimmed = newPath.trim();
+      // Support GitHub shorthand like 'facebook/react' or 'github.com/facebook/react'
+      if (/^[a-zA-Z0-9_.-]+\/[a-zA-Z0-9_.-]+$/.test(trimmed)) {
+        trimmed = `https://github.com/${trimmed}`;
+      } else if (trimmed.startsWith('github.com/')) {
+        trimmed = `https://${trimmed}`;
       }
-      if (!fs.existsSync(targetDir)) {
-        const { execFile } = await import('node:child_process');
-        const { promisify } = await import('node:util');
-        const execFileAsync = promisify(execFile);
-        await execFileAsync('git', ['clone', '--depth', '1', newPath, targetDir], { timeout: 120000 });
+
+      if (trimmed.startsWith('http://') || trimmed.startsWith('https://') || trimmed.startsWith('git@')) {
+        const parts = trimmed.replace(/\.git$/, '').split('/').filter(Boolean);
+        const repoIdentifier = parts.slice(-2).join('_').replace(/[^a-zA-Z0-9_-]/g, '_') || 'cloned-repo';
+        const clonesDir = path.resolve(process.cwd(), '.repolenz/clones');
+        const targetDir = path.join(clonesDir, repoIdentifier);
+
+        if (!fs.existsSync(clonesDir)) {
+          fs.mkdirSync(clonesDir, { recursive: true });
+        }
+
+        if (!fs.existsSync(targetDir)) {
+          try {
+            const { execFile } = await import('node:child_process');
+            const { promisify } = await import('node:util');
+            const execFileAsync = promisify(execFile);
+            await execFileAsync('git', ['clone', '--depth', '1', trimmed, targetDir], { timeout: 120000 });
+          } catch (err) {
+            if (fs.existsSync(targetDir)) {
+              try { fs.rmSync(targetDir, { recursive: true, force: true }); } catch {}
+            }
+            throw new Error(`Failed to clone git repository (${trimmed}). Please ensure the repository is public and accessible.`);
+          }
+        }
+        newPath = targetDir;
+      } else {
+        newPath = trimmed;
       }
-      newPath = targetDir;
     }
 
     // Check if user is attempting to pass a Windows drive path on a Linux cloud container
     if (process.platform !== 'win32' && typeof newPath === 'string' && (/^[A-Za-z]:/.test(newPath) || newPath.includes(':'))) {
-      throw new Error(`Cannot access local drive path "${newPath}" on cloud server. The cloud web app cannot read files from your private computer. Use a Git URL, upload your project files, or run 'npx repolenz' locally in your terminal!`);
+      throw new Error(`Cannot access local drive path "${newPath}" on cloud server. Please enter a public GitHub repository link (e.g. https://github.com/expressjs/express).`);
     }
 
     const resolved = normalizePath(path.resolve(newPath));
     if (!fs.existsSync(resolved) || !fs.statSync(resolved).isDirectory()) {
-      throw new Error(`Directory not found: "${resolved}". If you are on the cloud, please use a Git URL or upload your project files.`);
+      throw new Error(`Directory not found: "${resolved}". Please enter a valid GitHub repository URL.`);
     }
 
     this.rootPath = resolved;
     this.cachedAnalysis = null;
     this._initDatabase();
     this._recordRecentRepository(resolved);
+    await this.getOrRunAnalysis(true);
   }
 
   /**
