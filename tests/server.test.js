@@ -156,4 +156,31 @@ describe('RepoMap Express API Server (In-Memory)', () => {
     expect(res.body.citations.length).toBeGreaterThan(0);
     expect(res.body.citations[0].filePath).toContain('parser.js');
   });
+
+  it('POST /api/repository/upload should validate input parameters', async () => {
+    const resEmpty = await request(app, 'POST', '/api/repository/upload', {});
+    expect(resEmpty.statusCode).toBe(400);
+    expect(resEmpty.body.error).toContain('Valid repository "name" and "files" array are required');
+  });
+
+  it('POST /api/repository/upload should save uploaded files and switch repository', async () => {
+    const mockFiles = [
+      { path: 'test_project/index.js', content: 'console.log("hello world");' },
+      { path: 'test_project/utils.js', content: 'export function add(a, b) { return a + b; }' }
+    ];
+
+    const res = await request(app, 'POST', '/api/repository/upload', {
+      name: 'test_project',
+      files: mockFiles
+    });
+
+    expect(res.statusCode).toBe(200);
+    expect(res.body).toHaveProperty('path');
+    expect(res.body.path).toContain('test_project');
+
+    // Verify service switched to the uploaded directory
+    const statusRes = await request(app, 'GET', '/api/repository/status');
+    expect(statusRes.statusCode).toBe(200);
+    expect(statusRes.body.rootPath).toBe(res.body.path);
+  });
 });

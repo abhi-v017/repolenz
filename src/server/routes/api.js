@@ -27,6 +27,21 @@ export function createApiRouter(service) {
     }
   });
 
+  // 1b. Upload Project Files (Enables local project analysis on cloud-hosted instances)
+  router.post('/repository/upload', async (req, res, next) => {
+    try {
+      const { name, files } = req.body;
+      if (!name || !Array.isArray(files) || files.length === 0) {
+        return res.status(400).json({ error: 'Valid repository "name" and "files" array are required' });
+      }
+
+      const uploadedPath = await service.saveUploadedFiles(name, files);
+      res.json({ message: 'Files uploaded and indexed successfully', path: uploadedPath });
+    } catch (err) {
+      next(err);
+    }
+  });
+
   router.get('/repository/recents', (req, res, next) => {
     try {
       const recents = service.getRecentRepositories();

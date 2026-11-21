@@ -106,7 +106,7 @@ export class RepositoryService {
   async setRepository(newPath) {
     if (typeof newPath === 'string' && (newPath.startsWith('http://') || newPath.startsWith('https://') || newPath.startsWith('git@'))) {
       const sanitizedName = newPath.replace(/\.git$/, '').split('/').pop() || 'cloned-repo';
-      const clonesDir = path.resolve(process.cwd(), '.repomap/clones');
+      const clonesDir = path.resolve(process.cwd(), '.repolenz/clones');
       const targetDir = path.join(clonesDir, sanitizedName);
       if (!fs.existsSync(clonesDir)) {
         fs.mkdirSync(clonesDir, { recursive: true });
@@ -120,15 +120,69 @@ export class RepositoryService {
       newPath = targetDir;
     }
 
+    // Check if user is attempting to pass a Windows drive path on a Linux cloud container
+    if (process.platform !== 'win32' && typeof newPath === 'string' && (/^[A-Za-z]:/.test(newPath) || newPath.includes(':'))) {
+      throw new Error(`Cannot access local drive path "${newPath}" on cloud server. The cloud web app cannot read files from your private computer. Use a Git URL, upload your project files, or run 'npx repolenz' locally in your terminal!`);
+    }
+
     const resolved = normalizePath(path.resolve(newPath));
     if (!fs.existsSync(resolved) || !fs.statSync(resolved).isDirectory()) {
-      throw new Error(`Directory not found: "${resolved}"`);
+      throw new Error(`Directory not found: "${resolved}". If you are on the cloud, please use a Git URL or upload your project files.`);
     }
 
     this.rootPath = resolved;
     this.cachedAnalysis = null;
     this._initDatabase();
     this._recordRecentRepository(resolved);
+  }
+
+  /**
+   * Saves uploaded project files into a local uploads directory and switches repository.
+   *
+   * @param {string} repoName
+   * @param {Array<{ path: string, content: string }>} files
+   * @returns {Promise<string>}
+   */
+  async saveUploadedFiles(repoName, files) {
+    const sanitizedName = (repoName || 'uploaded-project').replace(/[^a-zA-Z0-9_-]/g, '_');
+    const uploadBaseDir = path.resolve(process.cwd(), '.repolenz/uploads', sanitizedName);
+
+    // Clean or create target directory
+    if (fs.existsSync(uploadBaseDir)) {
+      fs.rmSync(uploadBaseDir, { recursive: true, force: true });
+    }
+    fs.mkdirSync(uploadBaseDir, { recursive: true });
+
+    const uploadDirWithSep = uploadBaseDir.endsWith(path.sep) ? uploadBaseDir : uploadBaseDir + path.sep;
+
+    // Write all uploaded files
+    for (const f of files) {
+      if (!f.path || typeof f.content !== 'string') continue;
+      
+      let relPath = f.path.replace(/^[/\\]+/, '');
+      const segments = relPath.split(/[/\\]/);
+      // Strip initial root folder name from webkitRelativePath if it matches repoName or sanitizedName
+      if (segments.length > 1 && (segments[0] === repoName || segments[0] === sanitizedName)) {
+        relPath = segments.slice(1).join('/');
+      }
+      
+      const targetFilePath = path.resolve(uploadBaseDir, relPath);
+
+      // Security check: ensure path does not escape uploadBaseDir
+      if (!targetFilePath.startsWith(uploadDirWithSep) && targetFilePath !== uploadBaseDir) continue;
+
+      const fileDir = path.dirname(targetFilePath);
+      if (!fs.existsSync(fileDir)) {
+        fs.mkdirSync(fileDir, { recursive: true });
+      }
+      fs.writeFileSync(targetFilePath, f.content, 'utf8');
+    }
+
+    // Switch active repository to the uploaded directory
+    await this.setRepository(uploadBaseDir);
+    // Pre-run analysis so codebase graph is immediately primed
+    await this.getOrRunAnalysis(true);
+    return this.rootPath;
   }
 
   /**

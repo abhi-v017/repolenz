@@ -175,6 +175,7 @@ export function App() {
         currentPath={repoStatus?.rootPath}
         recentRepos={recentRepos}
         onSelectPath={handleSwitchRepo}
+        onRefresh={loadAllData}
       />
 
       {/* File Viewer Modal */}

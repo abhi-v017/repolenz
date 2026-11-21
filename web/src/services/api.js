@@ -97,3 +97,16 @@ export async function selectRepository(targetPath) {
   }
   return res.json();
 }
+
+export async function uploadRepositoryFiles(name, files) {
+  const res = await fetch(`${API_BASE}/repository/upload`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, files })
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.error || `Failed to upload project files`);
+  }
+  return res.json();
+}
