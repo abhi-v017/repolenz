@@ -1,0 +1,8 @@
+node_modules
+web/node_modules
+.repomap
+.git
+.github
+tests
+coverage
+*.log

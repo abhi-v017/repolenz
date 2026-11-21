@@ -1,0 +1,47 @@
+{
+  "name": "repolenz",
+  "version": "0.1.0",
+  "description": "Codebase Intelligence & Developer Navigation Platform",
+  "type": "module",
+  "main": "src/index.js",
+  "bin": {
+    "repolenz": "src/index.js",
+    "repomap": "src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node src/server/app.js",
+    "scan": "node src/index.js",
+    "build:web": "npm --prefix web run build",
+    "prepublishOnly": "npm --prefix web run build",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "files": [
+    "src",
+    "web/dist",
+    "Dockerfile",
+    "render.yaml",
+    "README.md"
+  ],
+  "keywords": [
+    "repolenz",
+    "codebase-intelligence",
+    "ast",
+    "tree-sitter",
+    "developer-tools",
+    "dependency-graph"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.3.0",
+    "ignore": "^7.0.16",
+    "tree-sitter-wasms": "^0.1.13",
+    "web-tree-sitter": "^0.20.8"
+  },
+  "devDependencies": {
+    "vitest": "^5.1.1"
+  }
+}

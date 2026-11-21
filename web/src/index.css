@@ -1,0 +1,248 @@
+@import "tailwindcss";
+@import "@xyflow/react/dist/style.css";
+
+@layer base {
+  body {
+    background-color: #000000;
+    color: #f1f5f9;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
+.font-comic {
+  font-family: 'Comic Neue', 'Chalkboard SE', 'Comic Sans MS', cursive, sans-serif;
+}
+
+/* Flat AMOLED Styles - Zero Glow, Zero Neon */
+.liquid-glass {
+  background: #09090b;
+  border: 1px solid #27272a;
+}
+
+.liquid-glass-card {
+  background: #09090b;
+  border: 1px solid #27272a;
+  box-shadow: none;
+}
+
+.liquid-glass-card:hover {
+  border-color: #3f3f46;
+}
+
+.liquid-glass-input {
+  background: #121214;
+  border: 1px solid #27272a;
+  color: #f8fafc;
+}
+
+.liquid-glass-input:focus {
+  background: #18181b;
+  border-color: #581c87;
+  outline: none;
+  box-shadow: none;
+}
+
+/* Custom modern scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* Hide scrollbars completely while keeping scroll functionality */
+.no-scrollbar::-webkit-scrollbar,
+nav::-webkit-scrollbar,
+header::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.no-scrollbar,
+nav,
+header {
+  -ms-overflow-style: none !important;  /* IE and Edge */
+  scrollbar-width: none !important;  /* Firefox */
+}
+
+/* React Flow AMOLED Canvas & Pastel Nodes */
+.react-flow__background {
+  background-color: #000000 !important;
+}
+
+.react-flow__node {
+  border-radius: 12px;
+  font-family: inherit;
+}
+
+.react-flow__node-default {
+  background: #121214;
+  color: #f8fafc;
+  border: 1px solid #27272a;
+  box-shadow: none !important;
+}
+
+.react-flow__node-default.selected {
+  border-color: #7e22ce !important;
+  box-shadow: none !important;
+}
+
+.react-flow__edge-path {
+  stroke: #3f3f46 !important;
+  stroke-width: 1.5 !important;
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke: #7e22ce !important;
+  stroke-width: 2 !important;
+}
+
+.react-flow__edge-text {
+  font-size: 10px !important;
+  fill: #a1a1aa !important;
+  font-family: 'JetBrains Mono', monospace !important;
+}
+
+.react-flow__edge-textbg {
+  fill: #09090b !important;
+}
+
+.react-flow__controls {
+  background: #18181b !important;
+  border: 1px solid #27272a !important;
+  border-radius: 10px !important;
+  overflow: hidden;
+  box-shadow: none !important;
+}
+
+.react-flow__controls-button {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  fill: #a1a1aa !important;
+}
+
+.react-flow__controls-button:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  fill: #f4f4f5 !important;
+}
+
+/* Solid Buttons - Clean, Flat, Zero Bounce, Zero Glow */
+.btn-solid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Comic Neue', 'Chalkboard SE', 'Comic Sans MS', cursive, sans-serif;
+  font-weight: 700;
+  border-radius: 0.75rem;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.btn-solid:hover:not(:disabled) {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.btn-solid:active:not(:disabled) {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.btn-solid:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.btn-solid-plum,
+.btn-solid-sky {
+  background-color: #21122e;
+  color: #f5f3ff;
+  border: 1px solid #3d2153;
+  box-shadow: none !important;
+}
+.btn-solid-plum:hover:not(:disabled),
+.btn-solid-sky:hover:not(:disabled) {
+  background-color: #2e1840;
+  border-color: #552d75;
+  color: #ffffff;
+  box-shadow: none !important;
+}
+
+.btn-solid-purple {
+  background-color: #3b0764;
+  color: #f3e8ff;
+  border: 1px solid #581c87;
+  box-shadow: none !important;
+}
+.btn-solid-purple:hover:not(:disabled) {
+  background-color: #581c87;
+  border-color: #7e22ce;
+  color: #ffffff;
+  box-shadow: none !important;
+}
+
+.btn-solid-emerald {
+  background-color: #064e3b;
+  color: #d1fae5;
+  border: 1px solid #065f46;
+  box-shadow: none !important;
+}
+.btn-solid-emerald:hover:not(:disabled) {
+  background-color: #065f46;
+  border-color: #047857;
+  color: #ffffff;
+  box-shadow: none !important;
+}
+
+.btn-solid-amber {
+  background-color: #451a03;
+  color: #fef3c7;
+  border: 1px solid #78350f;
+  box-shadow: none !important;
+}
+.btn-solid-amber:hover:not(:disabled) {
+  background-color: #78350f;
+  border-color: #92400e;
+  color: #ffffff;
+  box-shadow: none !important;
+}
+
+.btn-solid-zinc {
+  background-color: #27272a;
+  color: #e4e4e7;
+  border: 1px solid #3f3f46;
+  box-shadow: none !important;
+}
+.btn-solid-zinc:hover:not(:disabled) {
+  background-color: #3f3f46;
+  border-color: #52525b;
+  color: #ffffff;
+  box-shadow: none !important;
+}
+
+.btn-solid-rose {
+  background-color: #4c0519;
+  color: #ffe4e6;
+  border: 1px solid #881337;
+  box-shadow: none !important;
+}
+.btn-solid-rose:hover:not(:disabled) {
+  background-color: #881337;
+  border-color: #9f1239;
+  color: #ffffff;
+  box-shadow: none !important;
+}

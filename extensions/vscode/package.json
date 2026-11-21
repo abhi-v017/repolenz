@@ -1,0 +1,49 @@
+{
+  "name": "repolenz",
+  "displayName": "RepoLenz - Codebase Intelligence & Dependency Graph",
+  "description": "Interactive codebase dependency graphs, change impact analysis, and AST code intelligence inside VS Code.",
+  "version": "0.1.0",
+  "publisher": "repolenz",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Visualization",
+    "Other"
+  ],
+  "keywords": [
+    "repolenz",
+    "dependency-graph",
+    "codebase-intelligence",
+    "ast",
+    "tree-sitter",
+    "architecture"
+  ],
+  "activationEvents": [
+    "onCommand:repolenz.open"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "repolenz.open",
+        "title": "RepoLenz: Open Dependency Map",
+        "icon": "$(type-hierarchy)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "repolenz.open",
+          "group": "navigation"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "repolenz.open"
+        }
+      ]
+    }
+  }
+}
