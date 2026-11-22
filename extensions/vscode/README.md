@@ -1,7 +1,7 @@
 # RepoLenz for Visual Studio Code
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/abhi-v017/repolenz/main/extensions/vscode/media/icon.svg" width="96" height="96" alt="RepoLenz Icon" />
+  <img src="https://raw.githubusercontent.com/abhi-v017/repolenz/main/extensions/vscode/media/icon.png" width="96" height="96" alt="RepoLenz Icon" />
 </p>
 
 <p align="center">

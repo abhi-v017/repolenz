@@ -1,7 +1,7 @@
 # RepoLenz — Codebase Intelligence & Developer Navigation Platform
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/abhi-v017/repolenz/main/extensions/vscode/media/icon.svg" width="96" height="96" alt="RepoLenz Logo" />
+  <img src="https://raw.githubusercontent.com/abhi-v017/repolenz/main/extensions/vscode/media/icon.png" width="96" height="96" alt="RepoLenz Logo" />
 </p>
 
 <p align="center">

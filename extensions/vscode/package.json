@@ -3,7 +3,7 @@
   "displayName": "RepoLenz - Codebase Intelligence & Dependency Graph",
   "description": "Interactive codebase dependency graphs, change impact analysis, and AST code intelligence inside VS Code.",
   "version": "0.1.1",
-  "publisher": "repolenz",
+  "publisher": "abekdev",
   "icon": "media/icon.png",
   "license": "MIT",
   "repository": {
