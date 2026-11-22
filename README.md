@@ -35,7 +35,7 @@
 Explore module connections, cross-folder imports, and architectural tiers with pan, zoom, layer isolation, and DAG cycle detection.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/abhi-v017/repolenz/main/web-ss/web-graph.png" width="100%" alt="RepoLenz Interactive Dependency Graph" />
+  <img src="https://res.cloudinary.com/dulfdrdf2/image/upload/v1795326739/web-graph_cdyabp.png" width="100%" alt="RepoLenz Interactive Dependency Graph" />
 </p>
 
 ---
@@ -44,7 +44,7 @@ Explore module connections, cross-folder imports, and architectural tiers with p
 Select any function or module to trace downstream dependencies via breadth-first traversal. Identify exactly which files could break *before* you make code changes.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/abhi-v017/repolenz/main/web-ss/web-impact.png" width="100%" alt="RepoLenz Change Impact Analysis" />
+  <img src="https://res.cloudinary.com/dulfdrdf2/image/upload/v1795326739/web-impact_xos5pm.png" width="100%" alt="RepoLenz Change Impact Analysis" />
 </p>
 
 ---
@@ -53,7 +53,7 @@ Select any function or module to trace downstream dependencies via breadth-first
 Detect circular import chains that break bundler tree-shaking and trigger runtime initialization bugs. Monitor lines of code, language breakdown, and repository distribution.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/abhi-v017/repolenz/main/web-ss/web-overview.png" width="100%" alt="RepoLenz Architecture Overview" />
+  <img src="https://res.cloudinary.com/dulfdrdf2/image/upload/v1795326738/web-overview_ujtldj.png" width="100%" alt="RepoLenz Architecture Overview" />
 </p>
 
 ---
@@ -62,13 +62,13 @@ Detect circular import chains that break bundler tree-shaking and trigger runtim
 Open RepoLenz directly inside VS Code editor tabs. Click any node in the graph to jump to that file and line in your active editor.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/abhi-v017/repolenz/main/vs-ss/vscode-graph.png" width="100%" alt="RepoLenz inside VS Code" />
+  <img src="https://res.cloudinary.com/dulfdrdf2/image/upload/v1795326763/vscode-graph_jojpwv.png" width="100%" alt="RepoLenz inside VS Code" />
 </p>
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/abhi-v017/repolenz/main/vs-ss/vscode-commands.png" width="60%" alt="RepoLenz Command Palette" />
+  <img src="https://res.cloudinary.com/dulfdrdf2/image/upload/v1795326762/vscode-commands_lxoate.png" width="60%" alt="RepoLenz Command Palette" />
   &nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/abhi-v017/repolenz/main/vs-ss/vscode-button.png" width="30%" alt="RepoLenz Title Bar Button" />
+  <img src="https://res.cloudinary.com/dulfdrdf2/image/upload/v1795326761/vscode-button_ijvt7u.png" width="30%" alt="RepoLenz Title Bar Button" />
 </p>
 
 ---

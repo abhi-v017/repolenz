@@ -22,14 +22,14 @@
 ### 1. Interactive Dependency Graph in Editor Tab
 Pan, zoom, and inspect full module architecture directly within your editor.
 
-![RepoLenz Dependency Map in VS Code](https://raw.githubusercontent.com/abhi-v017/repolenz/main/extensions/vscode/media/screenshots/vscode-graph.png)
+![RepoLenz Dependency Map in VS Code](https://res.cloudinary.com/dulfdrdf2/image/upload/v1795326763/vscode-graph_jojpwv.png)
 
 ---
 
 ### 2. Architecture Overview & Circular Dependency Check
 Detect problematic import cycles before they break bundling, and review lines-of-code and file metrics.
 
-![RepoLenz Architecture Overview](https://raw.githubusercontent.com/abhi-v017/repolenz/main/extensions/vscode/media/screenshots/vscode-overview.png)
+![RepoLenz Architecture Overview](https://res.cloudinary.com/dulfdrdf2/image/upload/v1795326763/vscode-overview_ukfzrp.png)
 
 ---
 
@@ -37,9 +37,9 @@ Detect problematic import cycles before they break bundling, and review lines-of
 Launch the map in one click using the editor header button or execute dedicated commands from the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`).
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/abhi-v017/repolenz/main/extensions/vscode/media/screenshots/vscode-commands.png" width="65%" alt="Command Palette" />
+  <img src="https://res.cloudinary.com/dulfdrdf2/image/upload/v1795326762/vscode-commands_lxoate.png" width="65%" alt="Command Palette" />
   &nbsp;&nbsp;
-  <img src="https://raw.githubusercontent.com/abhi-v017/repolenz/main/extensions/vscode/media/screenshots/vscode-button.png" width="30%" alt="Editor Button" />
+  <img src="https://res.cloudinary.com/dulfdrdf2/image/upload/v1795326761/vscode-button_ijvt7u.png" width="30%" alt="Editor Button" />
 </p>
 
 ---
