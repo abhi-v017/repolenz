@@ -1,12 +1,20 @@
 {
   "name": "repolenz",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Codebase Intelligence & Developer Navigation Platform",
   "type": "module",
   "main": "src/index.js",
   "bin": {
     "repolenz": "src/index.js",
     "repomap": "src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abhi-v017/repolenz.git"
+  },
+  "homepage": "https://repolenz.onrender.com",
+  "bugs": {
+    "url": "https://github.com/abhi-v017/repolenz/issues"
   },
   "scripts": {
     "start": "node src/index.js",

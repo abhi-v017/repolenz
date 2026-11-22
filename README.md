@@ -1,7 +1,7 @@
 # RepoLenz — Codebase Intelligence & Developer Navigation Platform
 
 <p align="center">
-  <img src="extensions/vscode/media/icon.svg" width="96" height="96" alt="RepoLenz Logo" />
+  <img src="https://raw.githubusercontent.com/abhi-v017/repolenz/main/extensions/vscode/media/icon.svg" width="96" height="96" alt="RepoLenz Logo" />
 </p>
 
 <p align="center">
@@ -12,7 +12,7 @@
 <p align="center">
   <a href="https://repolenz.onrender.com"><img src="https://img.shields.io/badge/Render-Live_Web_App-blue?style=flat-square&logo=render" alt="Render Live Web App"></a>
   <a href="https://www.npmjs.com/package/repolenz"><img src="https://img.shields.io/npm/v/repolenz?style=flat-square&color=purple" alt="npm version"></a>
-  <a href="https://github.com/repolenz/repolenz"><img src="https://img.shields.io/badge/License-MIT-emerald?style=flat-square" alt="MIT License"></a>
+  <a href="https://github.com/abhi-v017/repolenz"><img src="https://img.shields.io/badge/License-MIT-emerald?style=flat-square" alt="MIT License"></a>
   <a href="https://nodejs.org"><img src="https://img.shields.io/badge/Node.js-22+-green?style=flat-square&logo=node.js" alt="Node.js 22+"></a>
   <a href="https://marketplace.visualstudio.com"><img src="https://img.shields.io/badge/VS_Code_Extension-Ready-blueviolet?style=flat-square&logo=visual-studio-code" alt="VS Code Extension"></a>
 </p>
@@ -35,7 +35,7 @@
 Explore module connections, cross-folder imports, and architectural tiers with pan, zoom, layer isolation, and DAG cycle detection.
 
 <p align="center">
-  <img src="web-ss/web-graph.png" width="100%" alt="RepoLenz Interactive Dependency Graph" />
+  <img src="https://raw.githubusercontent.com/abhi-v017/repolenz/main/web-ss/web-graph.png" width="100%" alt="RepoLenz Interactive Dependency Graph" />
 </p>
 
 ---
@@ -44,7 +44,7 @@ Explore module connections, cross-folder imports, and architectural tiers with p
 Select any function or module to trace downstream dependencies via breadth-first traversal. Identify exactly which files could break *before* you make code changes.
 
 <p align="center">
-  <img src="web-ss/web-impact.png" width="100%" alt="RepoLenz Change Impact Analysis" />
+  <img src="https://raw.githubusercontent.com/abhi-v017/repolenz/main/web-ss/web-impact.png" width="100%" alt="RepoLenz Change Impact Analysis" />
 </p>
 
 ---
@@ -53,7 +53,7 @@ Select any function or module to trace downstream dependencies via breadth-first
 Detect circular import chains that break bundler tree-shaking and trigger runtime initialization bugs. Monitor lines of code, language breakdown, and repository distribution.
 
 <p align="center">
-  <img src="web-ss/web-overview.png" width="100%" alt="RepoLenz Architecture Overview" />
+  <img src="https://raw.githubusercontent.com/abhi-v017/repolenz/main/web-ss/web-overview.png" width="100%" alt="RepoLenz Architecture Overview" />
 </p>
 
 ---
@@ -62,13 +62,13 @@ Detect circular import chains that break bundler tree-shaking and trigger runtim
 Open RepoLenz directly inside VS Code editor tabs. Click any node in the graph to jump to that file and line in your active editor.
 
 <p align="center">
-  <img src="vs-ss/vscode-graph.png" width="100%" alt="RepoLenz inside VS Code" />
+  <img src="https://raw.githubusercontent.com/abhi-v017/repolenz/main/vs-ss/vscode-graph.png" width="100%" alt="RepoLenz inside VS Code" />
 </p>
 
 <p align="center">
-  <img src="vs-ss/vscode-commands.png" width="60%" alt="RepoLenz Command Palette" />
+  <img src="https://raw.githubusercontent.com/abhi-v017/repolenz/main/vs-ss/vscode-commands.png" width="60%" alt="RepoLenz Command Palette" />
   &nbsp;&nbsp;
-  <img src="vs-ss/vscode-button.png" width="30%" alt="RepoLenz Title Bar Button" />
+  <img src="https://raw.githubusercontent.com/abhi-v017/repolenz/main/vs-ss/vscode-button.png" width="30%" alt="RepoLenz Title Bar Button" />
 </p>
 
 ---
